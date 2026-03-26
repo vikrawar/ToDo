@@ -1,0 +1,10 @@
+# Conda env for this project: Python from conda-forge; libraries from requirements.txt (pip).
+# Keeps `uvicorn[standard]` and other PyPI-only syntax working without duplicating pins.
+name: todo-fastapi
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+    - -r requirements.txt

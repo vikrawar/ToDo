@@ -1,0 +1,169 @@
+/* Layout: fixed composer, scrollable list region only */
+
+:root {
+  --bg: #f3f0ff;
+  --ink: #1e1b2e;
+  --muted: #6c6785;
+  --accent: #1f8f4a;
+  --accent-dim: #9aa89e;
+  --danger: #c23b3b;
+  --card: #ffffff;
+  --border: #2a2540;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Archivo Black", system-ui, sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at top, #fff7ff 0%, var(--bg) 55%, #e8e4f7 100%);
+}
+
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.25rem 1.25rem 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.header .title {
+  margin: 0;
+  letter-spacing: 0.04em;
+  font-size: clamp(1.75rem, 4vw, 2.4rem);
+}
+
+/* Input + round "check" submit */
+.composer-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0.75rem;
+}
+
+.todo-input {
+  flex: 1;
+  font-family: inherit;
+  font-size: clamp(1.35rem, 3.6vw, 2rem);
+  padding: 0.85rem 1rem;
+  border: 4px solid var(--border);
+  border-radius: 6px;
+  background: var(--card);
+  outline: none;
+}
+
+.todo-input:focus {
+  box-shadow: 0 0 0 3px #c4b5ff;
+}
+
+/* Grey when idle; .is-armed turns green in JS by toggling class */
+.submit-btn {
+  width: clamp(56px, 12vw, 72px);
+  border-radius: 12px;
+  border: 4px solid var(--border);
+  background: #dfe3df;
+  color: #6f756f;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: default;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.05s ease;
+}
+
+.submit-btn.is-armed {
+  background: #c9f5d9;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.submit-btn.is-armed:active {
+  transform: scale(0.97);
+}
+
+/* scroll container */
+.list-shell {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.todo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.todo-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem 0.5rem 0.65rem 0.75rem;
+  background: var(--card);
+  border: 3px solid var(--border);
+  border-radius: 8px;
+}
+
+/* Completed: greyed + slightly faded */
+.todo-row--done {
+  color: var(--muted);
+  opacity: 0.62;
+}
+
+.todo-row--done .todo-title {
+  text-decoration: line-through;
+}
+
+.todo-check {
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.todo-title {
+  flex: 1;
+  font-size: clamp(1.05rem, 2.8vw, 1.45rem);
+  line-height: 1.25;
+  word-break: break-word;
+}
+
+/* Delete: invisible until row hover; stronger on self-hover */
+.todo-delete {
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  opacity: 0;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: opacity 0.15s ease, border-color 0.15s ease, background 0.15s ease,
+    color 0.15s ease;
+}
+
+.todo-row:hover .todo-delete {
+  opacity: 0.35;
+  border-color: rgba(42, 37, 64, 0.35);
+  color: rgba(42, 37, 64, 0.55);
+}
+
+.todo-delete:hover,
+.todo-delete:focus-visible {
+  opacity: 1;
+  border-color: rgba(194, 59, 59, 0.55);
+  background: rgba(194, 59, 59, 0.16);
+  color: var(--danger);
+  outline: none;
+}

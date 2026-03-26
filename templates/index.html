@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blocky Todos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <!-- One page: composer stays put; only #todo-list scrolls (see CSS). -->
+    <main class="page">
+      <header class="header">
+        <h1 class="title">Todos</h1>
+      </header>
+
+      <section class="composer" aria-label="Add a new todo">
+        <div class="composer-row">
+          <input
+            id="todo-input"
+            class="todo-input"
+            type="text"
+            autocomplete="off"
+            placeholder="What needs doing?"
+            maxlength="500"
+            aria-label="Todo text"
+          />
+          <button
+            type="button"
+            id="submit-todo"
+            class="submit-btn"
+            aria-label="Add todo"
+            title="Add todo"
+          >
+            &#10003;
+          </button>
+        </div>
+      </section>
+
+      <section class="list-shell" aria-label="Todo list">
+        <ul id="todo-list" class="todo-list"></ul>
+      </section>
+    </main>
+
+    <!-- All browser-side logic lives in app.js (heavily commented). -->
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
