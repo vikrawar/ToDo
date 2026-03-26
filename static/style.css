@@ -17,20 +17,33 @@
 
 body {
   margin: 0;
-  min-height: 100vh;
+  height: 100vh;
   font-family: "Archivo Black", system-ui, sans-serif;
   color: var(--ink);
   background: radial-gradient(circle at top, #fff7ff 0%, var(--bg) 55%, #e8e4f7 100%);
+  overflow: hidden;
 }
 
 .page {
   max-width: 720px;
   margin: 0 auto;
   padding: 1.25rem 1.25rem 0;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.header,
+.composer {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--bg);
+}
+
+.composer {
+  box-shadow: 0 8px 14px -12px rgba(30, 27, 46, 0.45);
 }
 
 .header .title {
@@ -86,11 +99,24 @@ body {
 
 /* scroll container */
 .list-shell {
+  position: relative;
   flex: 1;
   min-height: 0;
   overflow-y: auto;
   padding-right: 0.25rem;
   margin-bottom: 1rem;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    rgba(0, 0, 0, 0.35) 18px,
+    rgba(0, 0, 0, 1) 52px
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    rgba(0, 0, 0, 0.35) 18px,
+    rgba(0, 0, 0, 1) 52px
+  );
 }
 
 .todo-list {
