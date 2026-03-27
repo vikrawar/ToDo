@@ -4,7 +4,6 @@
  * This file talks to our FastAPI server using `fetch` (built into modern browsers).
  * The server responds with JSON lists/objects; we turn that data into HTML on the page.
  *
- * If you are new to JavaScript, read top-to-bottom — later functions call earlier ones.
  */
 
 // Same-origin API (FastAPI serves this JS and the `/api/...` routes).

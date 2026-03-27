@@ -1,7 +1,7 @@
 """
 SQLite connection helpers.
 
-We use the standard library module `sqlite3` (no SQLAlchemy). The database file
+We use the standard library module `sqlite3`. The database file
 lives under `data/todos.db` relative to the project root so it stays separate
 from source code.
 """

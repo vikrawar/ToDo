@@ -2,11 +2,10 @@
 All SQL for todos lives here. Each function documents the intended ordering:
 
 - Incomplete items first, newest-at-top within that group (`created_at` DESC).
-- Completed items after that; within completed, oldest completion higher, newest
-  completion at the very bottom (`completed_at` ASC).
+- Completed items after that; newest-at-top (`completed_at` ASC).
 
-Sorting is done in Python after one `SELECT *` so the rules stay obvious in
-code (a good tradeoff for learning — avoids tricky compound SQL).
+Sorting is done in Python after one `SELECT *` so it's database-agnostic and
+easier to maintain.
 """
 
 from __future__ import annotations
@@ -43,7 +42,7 @@ def get_all_todos() -> list[dict]:
 
     # Newest active todos first.
     incomplete.sort(key=lambda r: r["created_at"], reverse=True)
-    # Completed section: first-completed nearer the active items; last-completed at bottom.
+    # Completed section.
     complete.sort(key=lambda r: r["completed_at"] or "")
 
     ordered = incomplete + complete

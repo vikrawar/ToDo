@@ -1,6 +1,6 @@
 """
-Pydantic models describe the *shape* of JSON bodies we accept and responses we
-return. FastAPI uses them for validation and OpenAPI docs — they are not an ORM.
+Pydantic models describing the shape of JSON bodies we accept and responses we
+return. FastAPI uses them for validation.
 """
 
 from __future__ import annotations

@@ -20,11 +20,13 @@ env/
 ENV/
 .conda/
 .env
+environment.yml
 
 # IDE / OS
 .vscode/
 .idea/
 .DS_Store
+pyrightconfig.json
 
 # Testing / coverage
 .pytest_cache/
